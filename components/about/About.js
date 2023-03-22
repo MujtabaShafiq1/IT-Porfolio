@@ -1,7 +1,7 @@
-const About = () => {
-  return (
-    <div>About</div>
-  )
-}
+import classes from "./About.module.css";
 
-export default About
+const About = () => {
+  return <div className={classes.container} id="about">About</div>;
+};
+
+export default About;

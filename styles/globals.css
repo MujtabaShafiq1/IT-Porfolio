@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
 
 * {
   box-sizing: border-box;
@@ -19,4 +19,6 @@ body {
   --color-primary: #000000;
   --color-secondary: #98d9b6;
   --color-other: #505050;
+
+  scroll-behavior: smooth;
 }

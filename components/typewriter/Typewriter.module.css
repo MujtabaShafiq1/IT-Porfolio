@@ -1,36 +1,19 @@
 .typewriter {
   height: 50vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.textContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .welcome {
   font-size: 5rem;
-  font-weight: 500;
+  font-weight: 800;
 }
 
 .text {
   font-size: 5rem;
-  font-weight: 500;
-  padding-right: 5px;
-  color: var(--color-primary);
-  background-color: var(--color-secondary);
-  animation: typing 1s steps(20, end), blink-caret 0.5s step-end infinite;
-}
-
-.cursor {
-  display: inline-block;
-  width: 0.5rem;
-  height: 7rem;
-  background-color: var(--color-primary);
-  animation: blink 1s infinite;
+  font-weight: 600;
+  padding-right: 2%;
+  color: var(--color-secondary);
+  border-right: 0.5rem solid;
+  animation: typing 0.8s steps(20, end), blink-caret 0.5s step-end infinite;
 }
 
 @keyframes typing {
@@ -48,16 +31,13 @@
     border-color: transparent;
   }
   50% {
-    border-color: var(--color-secondary);
+    border-color: var(--color-primary);
   }
 }
 
-@keyframes blink {
-  from,
-  to {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
+@media (max-width: 768px) {
+  .text,
+  .welcome {
+    font-size: 3rem;
   }
 }

@@ -1,6 +1,8 @@
+import classes from "./Project.module.css"
+
 const Project = () => {
   return (
-    <div>Project</div>
+    <div className={classes.container} id="project">Project</div>
   )
 }
 

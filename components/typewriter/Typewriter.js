@@ -31,15 +31,15 @@ const Typewriter = () => {
         setIsDeleting(false);
         setCurrentTextIndex((currentTextIndex + 1) % textArray.length);
       }
-    }, 200);
+    }, isDeleting ? 50: 200);
 
     return () => clearTimeout(timeout);
   }, [currentText, currentTextIndex, isDeleting, textArray]);
 
   return (
     <div className={classes.typewriter}>
-      <div className={classes.welcome}>Welcome,</div>
-      <div className={classes.textContainer}>
+      <span className={classes.welcome}>Welcome,</span>
+      <div>
         <span className={classes.text}>{currentText}</span>
         <span className={classes.cursor}></span>
       </div>
