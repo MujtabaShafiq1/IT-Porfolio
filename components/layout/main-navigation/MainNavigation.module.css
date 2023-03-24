@@ -4,6 +4,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+
+.header img {
+  cursor: pointer;
 }
 
 .header ul {
@@ -15,18 +23,16 @@
 }
 
 .header li {
+  cursor: pointer;
   margin: 0 1rem;
   position: relative;
-}
-
-.header a {
   color: var(--color-primary);
-  font-size: 1rem;
+  font-weight: 500;
+  font-size: 1.1rem;
 }
 
-.header a:hover,
-.header a:active,
-.header a.active {
+.header li:hover,
+.active {
   color: var(--color-secondary);
 }
 
