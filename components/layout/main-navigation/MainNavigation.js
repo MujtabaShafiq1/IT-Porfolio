@@ -10,6 +10,7 @@ const MainNavigation = () => {
 
   const toggleDrawer = () => {
     setOpenDrawer((prev) => !prev);
+    document.body.classList.toggle(classes.overflowHidden);
   };
 
   const scrollHandler = (e) => {
@@ -82,7 +83,7 @@ const MainNavigation = () => {
           </ul>
         </nav>
         <div
-          className={`${classes.hamburger} ${openDrawer ? classes.clicked : ""}`}
+          className={`${classes.hamburger} ${openDrawer && classes.clicked}`}
           onClick={toggleDrawer}>
           <div className={classes.patty}></div>
           <div className={classes.patty}></div>
