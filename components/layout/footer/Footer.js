@@ -4,7 +4,7 @@ import classes from "./Footer.module.css";
 const Footer = () => {
   return (
     <footer className={classes.footer}>
-      <Image src="/images/logo.png" alt="logo" width={70} height={70} className={classes.footerLogo}/>
+      <Image src="/images/logo.png" alt="logo" width={70} height={70}/>
       <p className={classes.footerDescription}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan massa nec
         massa fermentum malesuada.

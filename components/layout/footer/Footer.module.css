@@ -10,7 +10,8 @@
 }
 
 .footerLogo {
-
+  height: auto;
+  width: auto;
 }
 
 .footerDescription {
