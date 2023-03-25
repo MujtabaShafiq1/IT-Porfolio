@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useState, useEffect } from "react";
 import Image from "next/image";
 
 import Drawer from "../drawer/Drawer";
@@ -18,6 +18,34 @@ const MainNavigation = () => {
     setActiveLink(e.target.getAttribute("data-value"));
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      // Get the position of each section on the page
+      const projectsSection = document.querySelector("#projects").offsetTop;
+      const aboutSection = document.querySelector("#about").offsetTop;
+      const contactSection = document.querySelector("#contact").offsetTop;
+      const currentPosition = window.pageYOffset;
+
+      // Determine which section the user is currently viewing
+      if (currentPosition < projectsSection) {
+        setActiveLink("");
+      } else if (currentPosition >= projectsSection && currentPosition < aboutSection) {
+        setActiveLink("projects");
+      } else if (currentPosition >= aboutSection && currentPosition < contactSection) {
+        setActiveLink("about");
+      } else {
+        setActiveLink("contact");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Cleanup function to remove event listener when component unmounts
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <Fragment>
       {openDrawer && <Drawer />}
@@ -36,19 +64,19 @@ const MainNavigation = () => {
             <li
               onClick={scrollHandler}
               data-value="projects"
-              className={activeLink === "projects" ? classes.active : ""}>
+              className={activeLink === "projects" && classes.active}>
               Projects
             </li>
             <li
               onClick={scrollHandler}
               data-value="about"
-              className={activeLink === "about" ? classes.active : ""}>
+              className={activeLink === "about" && classes.active}>
               About
             </li>
             <li
               onClick={scrollHandler}
               data-value="contact"
-              className={activeLink === "contact" ? classes.active : ""}>
+              className={activeLink === "contact" && classes.active}>
               Contact
             </li>
           </ul>

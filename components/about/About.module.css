@@ -16,6 +16,7 @@
   transition: all 0.5s ease;
   opacity: 1;
   animation: fade 3.5s linear;
+  z-index: 2;
 }
 
 .image:hover {
