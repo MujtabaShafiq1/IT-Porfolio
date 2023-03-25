@@ -12,7 +12,7 @@ const About = () => {
       } else {
         setCurrentImage((prev) => prev + 1);
       }
-    }, 2000);
+    }, 3500);
 
     return () => clearInterval(timeout);
   }, [currentImage]);
@@ -59,7 +59,9 @@ const About = () => {
         height={650}
         quality={100}
         className={classes.image}
+        key={currentImage}
       />
+
     </div>
   );
 };
