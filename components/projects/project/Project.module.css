@@ -1,13 +1,34 @@
 .container {
   height: 40vh;
-  width: 95%;
+  width: 370px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 10px;
 }
 
-.container img {
+.title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.image {
   border-radius: 10px;
+  width: 100%;
+  height: 80%;
+}
+
+@media (max-width: 1244) {
+  .container {
+    width: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+  }
 }

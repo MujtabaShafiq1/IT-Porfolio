@@ -58,7 +58,6 @@
   height: 1rem;
   top: 0;
   right: 0;
-  z-index: 3;
   cursor: pointer;
 }
 
@@ -88,7 +87,7 @@
   opacity: 0;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .header nav {
     display: none;
   }

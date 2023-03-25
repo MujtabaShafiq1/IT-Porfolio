@@ -1,57 +1,113 @@
-import { useRef } from "react";
 import Image from "next/image";
-import classes from "./Contact.module.css";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import { contactSchema } from "@/helpers/validationSchema";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+import classes from "./Contact.module.css";
+
 const Contact = () => {
-  const nameRef = useRef();
-  const emailRef = useRef();
-  const messageRef = useRef();
+  const initialValues = {
+    name: "",
+    email: "",
+    message: "",
+  };
 
-  const formHandler = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (values, { resetForm }) => {
+    toast.info("Sending your response...");
 
-    const formData = {
-      name: nameRef.current.value,
-      email: emailRef.current.value,
-      message: messageRef.current.value,
-    };
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      body: JSON.stringify(values),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
-    try {
-      await contactSchema.validate(formData);
-      nameRef.current.value = "";
-      emailRef.current.value = "";
-      messageRef.current.value = "";
-      console.log(formData);
-    } catch (error) {
-      console.log(error)
+    const data = await response.json();
+    if (!response.ok) {
+      return toast(data.message || "Something went wrong!");
     }
+    toast.success(data.message);
+    resetForm();
   };
 
   return (
     <div className={classes.container} id="contact">
+
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar
+        closeOnClick
+        pauseOnHover
+      />
       <h1 className={classes.header}>
         Have Some <mark>Questions ?</mark>
       </h1>
+
       <div className={classes.formContainer}>
-        <Image src="/images/email.png" width={450} height={500} quality={100} />
-        <form className={classes.form} onSubmit={formHandler}>
-          <div className={classes.control}>
-            <label htmlFor="name">Name</label>
-            <input type="text" id="name" placeholder="Your name" required ref={nameRef} />
-          </div>
-          <div className={classes.control}>
-            <label htmlFor="email">Email</label>
-            <input type="email" id="email" placeholder="Your email" required ref={emailRef} />
-          </div>
-          <div className={classes.control}>
-            <label htmlFor="message">Message</label>
-            <textarea id="message" rows="5" placeholder="Message" required ref={messageRef} />
-          </div>
-          <div className={classes.actions}>
-            <button>Send</button>
-          </div>
-        </form>
+        <Image
+          src="/images/email.png"
+          alt="email"
+          width={450}
+          height={500}
+          quality={100}
+          className={classes.image}
+        />
+
+        <Formik
+          initialValues={initialValues}
+          validationSchema={contactSchema}
+          onSubmit={handleSubmit}>
+          {(formik) => (
+            <Form className={classes.form}>
+              <div className={classes.control}>
+                <label htmlFor="name">Name</label>
+                <ErrorMessage name="name" component="div" className={classes.error} />
+                <Field
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Your name"
+                  className={classes.input}
+                />
+              </div>
+
+              <div className={classes.control}>
+                <label htmlFor="email">Email</label>
+                <ErrorMessage name="email" component="div" className={classes.error} />
+                <Field
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Your email"
+                  className={classes.input}
+                />
+              </div>
+
+              <div className={classes.control}>
+                <label htmlFor="message">Message</label>
+                <ErrorMessage name="message" component="div" className={classes.error} />
+                <Field
+                  as="textarea"
+                  id="message"
+                  name="message"
+                  rows="5"
+                  placeholder="Message"
+                  className={classes.input}
+                />
+              </div>
+
+              <div>
+                <button type="submit" disabled={!formik.isValid}>
+                  Send
+                </button>
+              </div>
+            </Form>
+          )}
+        </Formik>
       </div>
     </div>
   );

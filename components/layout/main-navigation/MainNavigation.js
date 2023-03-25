@@ -1,6 +1,5 @@
 import { Fragment, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 
 import Drawer from "../drawer/Drawer";
 import classes from "./MainNavigation.module.css";
