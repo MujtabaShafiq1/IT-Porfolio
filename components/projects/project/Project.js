@@ -5,10 +5,12 @@ import { useInView } from "react-intersection-observer";
 
 const Project = ({ project, index }) => {
   const [isVisible, setIsVisible] = useState(false);
-  const { ref, inView } = useInView({ threshold: 0 });
+  const { ref, inView } = useInView({ threshold: 0, triggerOnce: false });
 
   if (inView && !isVisible) {
     setIsVisible(true);
+  } else if (!inView && isVisible) {
+    setIsVisible(false);
   }
 
   return (
