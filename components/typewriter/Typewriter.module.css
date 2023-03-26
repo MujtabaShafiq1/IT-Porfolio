@@ -12,6 +12,7 @@
 .welcome {
   font-size: 5rem;
   font-weight: 800;
+  color: var(--color-primary);
 }
 
 .text {
@@ -52,12 +53,12 @@
 
 @media (max-width: 768px) {
   .textContainer{
-    top: 15%;
-    left: 0;
+    top: 20%;
+    left: 10%;
   }
   .text,
   .welcome {
-    font-size: 3rem;
+    font-size: 3.3rem;
   }
   .cursor {
     width: 0.3rem;

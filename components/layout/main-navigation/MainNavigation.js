@@ -3,6 +3,7 @@ import Image from "next/image";
 
 import Drawer from "../drawer/Drawer";
 import classes from "./MainNavigation.module.css";
+import Navbar from "../navbar/Navbar";
 
 const MainNavigation = () => {
   const [activeLink, setActiveLink] = useState("");
@@ -60,28 +61,7 @@ const MainNavigation = () => {
           data-value="home"
           onClick={scrollHandler}
         />
-        <nav>
-          <ul>
-            <li
-              onClick={scrollHandler}
-              data-value="projects"
-              className={activeLink === "projects" && classes.active}>
-              Projects
-            </li>
-            <li
-              onClick={scrollHandler}
-              data-value="about"
-              className={activeLink === "about" && classes.active}>
-              About
-            </li>
-            <li
-              onClick={scrollHandler}
-              data-value="contact"
-              className={activeLink === "contact" && classes.active}>
-              Contact
-            </li>
-          </ul>
-        </nav>
+        <Navbar />
         <div
           className={`${classes.hamburger} ${openDrawer && classes.clicked}`}
           onClick={toggleDrawer}>

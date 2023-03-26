@@ -1,0 +1,59 @@
+.nav ul {
+  list-style: none;
+  display: flex;
+  align-items: baseline;
+  margin: 0;
+  padding: 0;
+}
+
+.nav li {
+  cursor: pointer;
+  margin: 0 1rem;
+  position: relative;
+  color: var(--color-primary);
+  font-weight: 500;
+  font-size: 1.3rem;
+}
+
+.nav li.active::after {
+  width: 100%;
+}
+
+.nav li.active {
+  color: var(--color-secondary);
+}
+
+/* Add a pseudo-element to create the underline */
+.nav li::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  height: 2px;
+  width: 0;
+  background-color: var(--color-secondary);
+  transform: translateX(-50%);
+  transition: width 0.5s ease-in-out;
+}
+
+@media (hover: hover) {
+  .nav li:hover::after {
+    width: 100%;
+  }
+  .nav li:hover {
+    color: var(--color-secondary);
+  }
+}
+
+
+@media (max-width: 767px) {
+  .nav ul {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+  }
+  .nav li {
+    font-size: 2rem;
+  }
+}

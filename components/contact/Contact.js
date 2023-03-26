@@ -35,7 +35,6 @@ const Contact = () => {
 
   return (
     <div className={classes.container} id="contact">
-
       <ToastContainer
         position="top-right"
         autoClose={3000}
@@ -71,7 +70,10 @@ const Contact = () => {
                   id="name"
                   name="name"
                   placeholder="Your name"
-                  className={classes.input}
+                  autoComplete="off"
+                  className={`${classes.input} ${
+                    formik.touched.name && formik.errors.name && classes.invalid
+                  }`}
                 />
               </div>
 
@@ -83,7 +85,10 @@ const Contact = () => {
                   id="email"
                   name="email"
                   placeholder="Your email"
-                  className={classes.input}
+                  autoComplete="off"
+                  className={`${classes.input} ${
+                    formik.touched.email && formik.errors.email && classes.invalid
+                  }`}
                 />
               </div>
 
@@ -96,7 +101,10 @@ const Contact = () => {
                   name="message"
                   rows="5"
                   placeholder="Message"
-                  className={classes.input}
+                  autoComplete="off"
+                  className={`${classes.input} ${
+                    formik.touched.message && formik.errors.message && classes.invalid
+                  }`}
                 />
               </div>
 

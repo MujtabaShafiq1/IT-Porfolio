@@ -14,10 +14,11 @@
 }
 
 .header {
-  font-size: 2.5rem;
+  font-size: 3.5rem;
   font-weight: 800;
   text-align: center;
   margin: 3rem 0;
+  color: var(--color-primary);
 }
 
 .header mark {
@@ -42,7 +43,7 @@
 
 .form label {
   font-weight: 500;
-  color: #333;
+  color: var(--color-primary);
   display: block;
   align-items: center;
   margin-bottom: 1rem;
@@ -51,15 +52,22 @@
 .form input,
 .form textarea {
   width: 100%;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.5);
   font-size: 1rem;
   padding: 1rem;
   margin-bottom: 1.5rem;
   font-weight: 300;
   border-radius: 20px;
   background: transparent;
-  color: #333;
+  color: var(--color-primary);
   resize: none;
+}
+
+.form input::placeholder,
+.form textarea::placeholder {
+  color: var(--color-primary);
+  font-weight: 300;
+  opacity: 0.3;
 }
 
 .form input:focus,
@@ -73,7 +81,7 @@
   cursor: pointer;
   background-color: var(--color-secondary);
   border: 1px solid var(--color-secondary);
-  color: white;
+  color: var(--color-other);
   font-weight: 800;
   font-size: 1rem;
   padding: 0.8rem 2rem;
@@ -83,12 +91,13 @@
 }
 
 .form button:hover {
-  background-color: #fff;
+  background-color: var(--color-secondary);
   color: var(--color-secondary);
   border: 1px solid var(--color-secondary);
 }
 
-.invalid {
+.form input.invalid,
+.form textarea.invalid {
   border: 1px solid red;
   animation: shake 500ms ease-in-out;
 }
@@ -97,6 +106,24 @@
   color: red;
   margin: 0.5rem 0;
   font-size: 0.9rem;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 @media (max-width: 1244px) {
@@ -111,5 +138,8 @@
   }
   .form {
     width: 100%;
+  }
+  .header {
+    font-size: 3rem;
   }
 }
