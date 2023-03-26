@@ -16,16 +16,13 @@ button {
 }
 
 body {
-  /* --color-primary: #000000; */
-  --color-primary: #fff;
+  --color-primary: #000000;
   --color-secondary: #98d9b6;
   --color-other: #fff;
 
-  /* --color-primary: #6FDA44.;
-  --color-secondary: #1d4354; 
-  --color-other: #505050;   */
-
-  background: radial-gradient(circle, #98d9b6, #000000);
+  /* --color-primary: #6FDA44;
+  --color-secondary: #1d4354;  */
+  /* --color-other: #505050;   */
 }
 
 ::-webkit-scrollbar {

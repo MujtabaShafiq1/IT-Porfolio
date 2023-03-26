@@ -1,12 +1,15 @@
 .container {
-  height: calc(100vh - 5rem);
-  position: relative;
+  height: 100vh;
+  width: 100%;
+  background: radial-gradient(circle, var(--color-secondary), var(--color-primary));
+  overflow: hidden;
 }
 
-.textContainer { 
+
+.textContainer {
   position: absolute;
-  top: 20%;
-  left: 10%;
+  top: 25%;
+  left: 20%;
 }
 
 .welcome {
@@ -52,7 +55,7 @@
 }
 
 @media (max-width: 768px) {
-  .textContainer{
+  .textContainer {
     top: 20%;
     left: 10%;
   }
