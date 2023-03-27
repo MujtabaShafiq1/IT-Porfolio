@@ -1,4 +1,6 @@
-.header {
+/* main container */
+
+.container {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -6,19 +8,25 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 999;
+  z-index: 5;
   height: 5rem;
   margin: 0 auto;
   max-width: 80vw;
 }
 
+/* toggle body */
+
 .overflowHidden {
   overflow: hidden;
 }
 
-.header img {
+/* image */
+
+.container img {
   cursor: pointer;
 }
+
+/* hamburger */
 
 .hamburger {
   width: 2rem;
@@ -54,9 +62,89 @@
   opacity: 0;
 }
 
+/* drawer container */
+
+.drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  z-index: 4;
+}
+
+/* navbar portion */
+
+.nav ul {
+  list-style: none;
+  display: flex;
+  align-items: baseline;
+  margin: 0;
+  padding: 0;
+}
+
+.nav li {
+  cursor: pointer;
+  margin: 0 1rem;
+  position: relative;
+  color: var(--color-primary);
+  font-weight: 500;
+  font-size: 1.3rem;
+}
+
+.nav li.active::after {
+  width: 100%;
+}
+
+.nav li.active {
+  color: var(--color-secondary);
+}
+
+.nav li::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  height: 2px;
+  width: 0;
+  background-color: var(--color-secondary);
+  transform: translateX(-50%);
+  transition: width 0.5s ease-in-out;
+}
+
+/* media queries */
+
+@media (hover: hover) {
+  .nav li:hover::after {
+    width: 100%;
+  }
+  .nav li:hover {
+    color: var(--color-secondary);
+  }
+}
+
 @media (max-width: 767px) {
-  .header nav {
+  .nav ul {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .nav li {
+    font-size: 1rem;
+    color: var(--color-other);
+  }
+  .nav {
     display: none;
+  }
+  .drawer .nav {
+    display: block;
   }
 }
 

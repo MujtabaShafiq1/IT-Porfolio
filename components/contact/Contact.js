@@ -27,7 +27,7 @@ const Contact = () => {
 
     const data = await response.json();
     if (!response.ok) {
-      return toast(data.message || "Something went wrong!");
+      return toast.error(data.message || "Something went wrong!");
     }
     toast.success(data.message);
     resetForm();
