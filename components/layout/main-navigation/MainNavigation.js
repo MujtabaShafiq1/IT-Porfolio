@@ -35,7 +35,7 @@ const MainNavigation = () => {
       }
     };
 
-    if(openDrawer) setOpenDrawer(false)
+    if(openDrawer) toggleDrawer()
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
